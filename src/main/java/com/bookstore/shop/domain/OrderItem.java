@@ -1,0 +1,31 @@
+package com.bookstore.shop.domain;
+
+import com.bookstore.shop.domain.item.Item;
+import lombok.Data;
+
+import javax.persistence.*;
+
+@Entity
+@Data
+public class OrderItem {
+
+    @Id
+    @GeneratedValue
+    @Column(name = "order_item_id")
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "item_id")
+    private Item item;
+
+    @ManyToOne
+    @JoinColumn(name="order_id")
+    private Order order;
+
+    private String category;
+    private String sub_category;
+
+    private int orderPrice; //가격
+    private int count;  //수량
+
+}
