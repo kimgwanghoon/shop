@@ -1,12 +1,15 @@
 package com.bookstore.shop.domain;
 
 import com.bookstore.shop.domain.item.Item;
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Data
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderItem {
 
     @Id
@@ -28,4 +31,25 @@ public class OrderItem {
     private int orderPrice; //가격
     private int count;  //수량
 
+    // 생성 메서드
+    public static OrderItem createOrderItem(Item item, int orderPrice, int count){
+        OrderItem orderItem = new OrderItem();
+        orderItem.setItem(item);
+        orderItem.setOrderPrice(orderPrice);
+        orderItem.setCount(count);
+        item.removeStock(count);
+        
+        return orderItem;
+    }
+
+    // 비즈니스 로직
+    // 취소
+    public void cancel() {
+        getItem().addStock(count);
+    }
+    
+    // 가격조회
+    public int getTotalPrice() {
+        return getOrderPrice() * getCount();
+    }
 }
