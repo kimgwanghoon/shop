@@ -8,9 +8,12 @@ import com.bookstore.shop.domain.item.Item;
 import com.bookstore.shop.repository.ItemRepository;
 import com.bookstore.shop.repository.MemberRepository;
 import com.bookstore.shop.repository.OrderRepository;
+import com.bookstore.shop.repository.OrderSearch;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
@@ -46,6 +49,11 @@ public class OrderService {
         Order order = orderRepository.findId(orderId);
         //주문취소
         order.cancel();
+    }
+
+    //검색
+    public List<Order> findOrders(OrderSearch orderSearch){
+        return orderRepository.findAll(orderSearch);
     }
 
 
