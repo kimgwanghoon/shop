@@ -1,8 +1,10 @@
 package com.bookstore.shop.domain;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +18,7 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
+    @NotEmpty
     private String name;
 
     @Embedded
@@ -26,6 +29,7 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
 
+    @CreationTimestamp
     private LocalDateTime createDate;
 
 }
