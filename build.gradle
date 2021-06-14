@@ -25,6 +25,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-devtools'
 	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.6'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-hibernate5' //주문조회 v1 프록시에러 해결
+
 	implementation 'junit:junit:4.12'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'

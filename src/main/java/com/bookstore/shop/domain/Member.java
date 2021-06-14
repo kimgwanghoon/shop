@@ -1,5 +1,6 @@
 package com.bookstore.shop.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -26,6 +27,7 @@ public class Member {
 
     private String email;
 
+    @JsonIgnore //주문조회 v1 무한루프 조치
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
 
