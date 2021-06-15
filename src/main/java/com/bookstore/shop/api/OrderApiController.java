@@ -4,6 +4,7 @@ import com.bookstore.shop.api.dto.SimpleOrderDto;
 import com.bookstore.shop.domain.Order;
 import com.bookstore.shop.repository.OrderRepository;
 import com.bookstore.shop.repository.OrderSearch;
+import com.bookstore.shop.repository.order.simplequery.OrderSimpleQueryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
 public class OrderApiController {
 
     private final OrderRepository orderRepository;
+    private final OrderSimpleQueryRepository orderSimpleQueryRepository;
 
     @GetMapping("/api/v1/orders")
     public List<Order> ordersV1(){
@@ -41,5 +43,10 @@ public class OrderApiController {
         List<SimpleOrderDto> result = orders.stream().map(o -> new SimpleOrderDto(o))
                 .collect(Collectors.toList());
         return result;
+    }
+
+    @GetMapping("/api/v4/simple-orders")
+    public List<SimpleOrderDto> ordersV4(){
+        return orderSimpleQueryRepository.findOrderDtos();
     }
 }
