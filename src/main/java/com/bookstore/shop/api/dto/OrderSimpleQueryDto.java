@@ -2,13 +2,12 @@ package com.bookstore.shop.api.dto;
 
 import com.bookstore.shop.domain.Address;
 import com.bookstore.shop.domain.status.OrderStatus;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Data
-@AllArgsConstructor
+//@AllArgsConstructor
 public class OrderSimpleQueryDto {
     private Long orderId;
     private String name;

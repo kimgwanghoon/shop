@@ -19,7 +19,7 @@ public class OrderApiController {
     private final OrderRepository orderRepository;
     private final OrderSimpleQueryRepository orderSimpleQueryRepository;
 
-    @GetMapping("/api/v1/orders")
+    @GetMapping("/api/v1/simple-orders")
     public List<Order> ordersV1(){
         List<Order> results = orderRepository.findAll(new OrderSearch());
         for(Order order : results){
