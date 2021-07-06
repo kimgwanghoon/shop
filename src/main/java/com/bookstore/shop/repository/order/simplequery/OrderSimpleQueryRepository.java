@@ -1,7 +1,7 @@
 package com.bookstore.shop.repository.order.simplequery;
 
 
-import com.bookstore.shop.api.dto.SimpleOrderDto;
+import com.bookstore.shop.dto.SimpleOrderDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,6 @@
 package com.bookstore.shop.api;
 
-import com.bookstore.shop.api.dto.SimpleOrderDto;
+import com.bookstore.shop.dto.SimpleOrderDto;
 import com.bookstore.shop.domain.Order;
 import com.bookstore.shop.repository.OrderRepository;
 import com.bookstore.shop.repository.OrderSearch;

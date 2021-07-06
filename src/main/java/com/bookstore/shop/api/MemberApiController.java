@@ -1,6 +1,6 @@
 package com.bookstore.shop.api;
 
-import com.bookstore.shop.api.dto.MemberListDto;
+import com.bookstore.shop.dto.MemberListDto;
 import com.bookstore.shop.domain.Member;
 import com.bookstore.shop.service.MemberService;
 import lombok.AllArgsConstructor;

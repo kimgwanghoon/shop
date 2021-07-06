@@ -1,4 +1,4 @@
-package com.bookstore.shop.api.dto;
+package com.bookstore.shop.dto;
 
 import com.bookstore.shop.domain.Address;
 import com.bookstore.shop.domain.status.OrderStatus;

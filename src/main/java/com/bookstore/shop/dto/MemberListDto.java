@@ -1,4 +1,4 @@
-package com.bookstore.shop.api.dto;
+package com.bookstore.shop.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
