@@ -4,8 +4,10 @@ import com.bookstore.shop.domain.Address;
 import com.bookstore.shop.domain.Order;
 import com.bookstore.shop.domain.OrderItem;
 import com.bookstore.shop.domain.status.OrderStatus;
+import com.bookstore.shop.dto.OrderQueryDto;
 import com.bookstore.shop.repository.OrderRepository;
 import com.bookstore.shop.repository.OrderSearch;
+import com.bookstore.shop.repository.order.query.OrderQueryRepository;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +23,7 @@ import java.util.stream.Collectors;
 public class OrderV2ApiController {
 
     private final OrderRepository orderRepository;
+    private final OrderQueryRepository orderQueryRepository;
 
     @GetMapping("/api/v1/orders")
     public List<Order> orderV1(){
@@ -61,6 +64,13 @@ public class OrderV2ApiController {
                 .map(o -> new OrderDto(o))
                 .collect(Collectors.toList());
         return collect;
+    }
+
+    @GetMapping("/api/v4/orders")
+    public List<OrderQueryDto> orderV4Page(){
+
+        return orderQueryRepository.findOrderQueryDtos();
+
     }
 
     @Getter
