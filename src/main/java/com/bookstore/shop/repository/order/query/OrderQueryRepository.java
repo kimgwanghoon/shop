@@ -1,5 +1,6 @@
 package com.bookstore.shop.repository.order.query;
 
+import com.bookstore.shop.dto.OrderFlatDto;
 import com.bookstore.shop.dto.OrderItemQueryDto;
 import com.bookstore.shop.dto.OrderQueryDto;
 import lombok.RequiredArgsConstructor;
@@ -65,5 +66,18 @@ public class OrderQueryRepository {
         result.forEach(o->o.setOrderItems(orderItemMap.get(o.getOrderId())));
 
         return result;
+    }
+
+    public List<OrderFlatDto> findOrderAllByDto_flat() {
+        return em.createQuery(
+                "select new com.bookstore.shop.dto.OrderFlatDto(o.id, m.name, o.orderDate, o.status, d.address, i.name, oi.orderPrice, oi.count)"+
+                        " from Order o"+
+                        " join o.member m" +
+                        " join o.delivery d" +
+                        " join o.orderItems oi" +
+                        " join oi.item i", OrderFlatDto.class)
+                .getResultList();
+
+
     }
 }
