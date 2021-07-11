@@ -73,6 +73,13 @@ public class OrderV2ApiController {
 
     }
 
+    @GetMapping("/api/v5/orders")
+    public List<OrderQueryDto> orderV5Page(){
+
+        return orderQueryRepository.findOrderAllByDto();
+
+    }
+
     @Getter
     static class OrderDto {
 
